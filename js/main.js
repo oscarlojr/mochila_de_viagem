@@ -3,7 +3,14 @@ const lista = document.getElementById('lista');
 
 form.addEventListener('submit', (evento) => {
   evento.preventDefault();
-  this.criaElemento(evento.target.elements['nome'].value, evento.target.elements['quantidade'].value);
+
+  const nome = evento.target.elements['nome'];
+  const quantidade = evento.target.elements['quantidade'];
+
+  this.criaElemento(nome.value, quantidade.value);
+
+  nome.value = "";
+  quantidade.value = "";
 });
 
 
@@ -20,40 +27,7 @@ function criaElemento(nome, quantidade) {
   novoItem.innerHTML += nome;
 
   lista.appendChild(novoItem);
+
+  localStorage.setItem('nome', nome);
+  localStorage.setItem('quantidade', quantidade);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const form = document.getElementById('novoItem');
-
-// form.addEventListener('submit', (evento) => {
-//   evento.preventDefault();
-//   criaElemento(evento.target.elements['nome'].value, evento.target.elements['quantidade'].value)
-// });
-
-// function criaElemento(nome, quantidade){
-
-//   console.log(nome);
-//   console.log(quantidade);
-
-// }
