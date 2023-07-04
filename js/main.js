@@ -57,8 +57,12 @@ function criaBotaoExcluir() {
   elementoBotao.innerText = 'x';
 
   elementoBotao.addEventListener('click', function() {
-    console.log(this)
+    deletaElemento(this.parentNode)
   });
 
   return elementoBotao;
 };
+
+function deletaElemento(tag){
+  tag.remove();
+}
