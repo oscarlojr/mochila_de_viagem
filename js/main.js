@@ -1,3 +1,5 @@
+//https://www.digitalocean.com/community/tutorials/js-drag-and-drop-vanilla-js-pt
+
 const form = document.getElementById('novoItem');
 const lista = document.getElementById('lista');
 const setItens = JSON.parse(localStorage.getItem('itens')) || [];
@@ -10,22 +12,21 @@ form.addEventListener('submit', (evento) => {
   evento.preventDefault();
   const nome = evento.target.elements['nome'];
   const quantidade = evento.target.elements['quantidade'];
-  const existe = setItens.find( elementos => elementos.nome === nome.value);
+  const existe = setItens.find( elemento => elemento.nome === nome.value);
   const objItens = {
     'nome': nome.value,
     'quantidade': quantidade.value,
   };
 
   if(existe) {
-    objItens.id = existe.id;
-    this.alualizaElementos(objItens);
+    objItens.id = existe.id
+    this.atualizaElementos(objItens);
     setItens[existe.id] = objItens;
   } else {
     objItens.id = setItens.length;
     this.criaElemetos(objItens);
     setItens.push(objItens);
-  }
-  
+  };
 
   localStorage.setItem('itens', JSON.stringify(setItens));
 
@@ -43,9 +44,21 @@ function criaElemetos(valorItem) {
 
   novoItem.appendChild(numeroItem);
   novoItem.innerHTML += valorItem.nome;
+  novoItem.appendChild(criaBotaoExcluir());
   lista.appendChild(novoItem);
 };
 
-function alualizaElementos(item) {
+function atualizaElementos(item) {
   document.querySelector(`[data-id="${item.id}"]`).innerHTML = item.quantidade;
-}
+};
+
+function criaBotaoExcluir() {
+  const elementoBotao = document.createElement('button');
+  elementoBotao.innerText = 'x';
+
+  elementoBotao.addEventListener('click', function() {
+    console.log(this)
+  });
+
+  return elementoBotao;
+};

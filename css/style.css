@@ -11,6 +11,14 @@ html {
     gap: 2em;
 }
 
+/* .conteudo {
+    padding: 10vh 3em 0;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
+} */
+
 .principal {
     flex-grow: 1;
     flex-basis: auto;
@@ -104,6 +112,14 @@ html {
     margin: 0;
     padding: 0;
 }
+
+/* .lista {
+    margin: 0;
+    padding: 0;
+    max-width: min-content;
+    display: flex;
+    gap: inherit;
+} */
 
 .item {
     list-style: none;
